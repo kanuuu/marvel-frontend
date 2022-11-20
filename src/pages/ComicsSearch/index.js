@@ -4,6 +4,20 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BeatLoader from "react-spinners/BeatLoader";
 
+//testing
+const autoComplete = (title, data, setDiv) => {
+  const regex = new RegExp(title, "g");
+  if (data?.results.length > 1) {
+    const value = data.results.find((elem) =>
+      elem.title.toLowerCase().search(regex)
+    );
+    const newDiv = [value?.title];
+    console.log(value);
+    console.log(newDiv);
+    setDiv(newDiv);
+  }
+};
+
 const ComicsSearch = ({ addToFav, favorites }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
@@ -31,22 +45,8 @@ const ComicsSearch = ({ addToFav, favorites }) => {
       }
     };
     fetchData();
-    autoComplete();
-  }, [limit, skip, title]);
-
-  //testing
-  const autoComplete = () => {
-    const regex = new RegExp(title, "g");
-    if (data?.results.length > 1) {
-      const value = data.results.find((elem) =>
-        elem.title.toLowerCase().search(regex)
-      );
-      const newDiv = [value?.title];
-      console.log(value);
-      console.log(newDiv);
-      setDiv(newDiv);
-    }
-  };
+    autoComplete(title, data, setDiv);
+  }, [limit, skip, title, data]);
 
   return isLoading ? (
     <div className="loading">
