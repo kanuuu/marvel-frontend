@@ -1,0 +1,146 @@
+.comics-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20%;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.comics-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  color: antiquewhite;
+}
+
+.comics-container input {
+  border: none;
+  border-radius: 5px;
+  height: 24px;
+}
+
+.comics-container input:focus {
+  outline: 2px solid red;
+}
+.covers-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.covers-div > img {
+  height: 100%;
+  width: 80%;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 1px 3px 0.3rem rgba(0, 0, 0, 0.555);
+}
+.covers-title-1 {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  box-sizing: border-box;
+  padding: 15px;
+  width: 80%;
+  background: rgba(0, 0, 0, 0.61);
+  height: 10%;
+  bottom: 0;
+  right: 10%;
+  left: 10%;
+  transition: all 0.3s ease;
+}
+.covers-title-2 {
+  position: absolute;
+  overflow: hidden;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+  color: white;
+  font-weight: bold;
+  box-sizing: border-box;
+  padding: 15px;
+  width: 80%;
+  background: rgba(0, 0, 0, 0.61);
+  height: 100%;
+  bottom: 0;
+  right: 10%;
+  left: 10%;
+  transition: all 0.3s ease;
+}
+
+.covers {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+}
+.button-container {
+  padding: 15px;
+  color: antiquewhite;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.button-container button {
+  background: red;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-size: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .covers-div {
+    display: flex;
+    flex-direction: row;
+    height: 80%;
+    width: 40%;
+  }
+}
+@media (min-width: 1024px) {
+  .covers-div {
+    display: flex;
+    flex-direction: row;
+    height: 80%;
+    width: 20%;
+  }
+  .comics-page {
+    margin-top: 0;
+  }
+  .covers-title-1,
+  .covers-title-2 {
+    font-size: 14px;
+  }
+  .button-container button:hover {
+    transition: all 0.3s ease;
+    background: white;
+    color: red;
+    cursor: pointer;
+  }
+  .covers-div > img:hover {
+    transition: all 0.3s ease;
+    filter: brightness(60%);
+    cursor: pointer;
+  }
+
+  .covers-title-2:hover {
+    cursor: pointer;
+  }
+}

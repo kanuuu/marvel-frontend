@@ -1,0 +1,250 @@
+.home-container {
+  padding: 0 1rem;
+}
+
+.home-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.thumbnail {
+  display: flex;
+  justify-content: center;
+}
+
+.home-images {
+  height: 100vh;
+  width: 99vw;
+  object-fit: cover;
+  object-position: center;
+  filter: blur(6px) brightness(20%);
+}
+
+.landing-image {
+  position: relative;
+}
+
+.landing-text {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  top: 50%;
+  right: 25%;
+  left: 25%;
+  letter-spacing: 2px;
+  line-height: 2;
+  color: white;
+  animation-duration: 1s;
+  animation-delay: 0;
+  animation-name: title-appear-1;
+}
+.landing-text-2 {
+  position: absolute;
+  top: 55%;
+  right: 25%;
+  left: 25%;
+  letter-spacing: 2px;
+  line-height: 2;
+  color: white;
+  animation-duration: 2s;
+  animation-delay: 0;
+  animation-name: title-appear-2;
+}
+.landing-indicator {
+  position: absolute;
+  font-size: 1rem;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.5);
+  animation-duration: 2s;
+  animation-delay: 0;
+  animation-iteration-count: infinite;
+  animation-name: scroll-down;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  box-sizing: border-box;
+  color: antiquewhite;
+  gap: 15px;
+}
+.text h2 {
+  font-size: clamp(1rem, 1.3rem, 2rem);
+  text-transform: uppercase;
+  color: rgb(255, 58, 58);
+}
+.text p {
+  font-size: clamp(13px, 0.9rem, 1.5rem);
+}
+
+.discover {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: antiquewhite;
+}
+/* .discover p {
+  font-size: clamp(13px, 0.9rem, 1.5rem);
+} */
+.not-favorites {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  font-size: 2rem;
+  stroke: black;
+  stroke-width: 30;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.favorites {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  font-size: 2rem;
+  stroke: black;
+  stroke-width: 30;
+  color: gold;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  animation: favorited 1s ease-in-out;
+}
+.discover-images {
+  transition: all 0.3s ease;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 1px 10px 1rem rgba(0, 0, 0, 0.555);
+}
+.discover-information {
+  transition: all 0.3s ease;
+  filter: blur(6px) brightness(5%);
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 1px 10px 1rem rgba(0, 0, 0, 0.555);
+}
+
+.discover-desc {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  color: white;
+  width: 90%;
+  top: 10%;
+  left: 15px;
+}
+.learn-more {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  height: 40px;
+}
+.learn-more > button {
+  background: red;
+  font-weight: bold;
+  font-size: 15px;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 2px 1rem rgba(255, 255, 255, 0.555);
+}
+.discover-desc p {
+  font-size: 12px;
+  letter-spacing: 2px;
+  line-height: 1.5;
+}
+
+@keyframes scroll-down {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes title-appear-1 {
+  0% {
+    transform: translateX(-100vh);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes title-appear-2 {
+  from {
+    transform: translateX(-100vh);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-2rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes favorited {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 768px) {
+  .discover {
+    height: 80%;
+    width: 50%;
+    margin-left: 25%;
+    cursor: pointer;
+  }
+
+  .discover:hover {
+    transition: all 0.3s ease;
+    filter: brightness(60%);
+  }
+
+  .not-favorites:hover {
+    transition: all 0.3s ease;
+    color: gold;
+    cursor: pointer;
+  }
+
+  .learn-more > button:hover {
+    transition: all 0.3s ease;
+    background: white;
+    color: red;
+    cursor: pointer;
+  }
+}

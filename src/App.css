@@ -1,38 +1,65 @@
-.App {
-  text-align: center;
+body {
+  font-family: "Poppins", sans-serif;
+  background: #bdc3c7; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #2c3e50,
+    #bdc3c7
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #2c3e50,
+    #bdc3c7
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a {
+  text-decoration: none;
+  color: black;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.container {
   min-height: 100vh;
+  max-width: 100vw;
+  margin: 0 auto;
+}
+.nav {
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  background: rgb(27, 27, 27);
+  z-index: 1337;
+  padding: 15px;
+  box-sizing: border-box;
   color: white;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.555);
+}
+.nav-logo {
+  height: 40px;
+  width: 100px;
+}
+.navbar-item {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.hidden {
+  display: none;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (min-width: 768px) {
+  .hidden {
+    display: inline;
+    font-size: 15px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .navbar-item:hover {
+    transition: all 0.3s ease;
+    color: red;
   }
 }
