@@ -2,6 +2,7 @@ import "./ComicsSearch.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import BeatLoader from "react-spinners/BeatLoader";
 
 const ComicsSearch = ({ addToFav, favorites }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,7 +21,7 @@ const ComicsSearch = ({ addToFav, favorites }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/comics?limit=${limit}&skip=${skip}&title=${title}`
+          `https://site--marvel-backend--l7d2svd7qlv9.code.run/comics?limit=${limit}&skip=${skip}&title=${title}`
         );
 
         setData(response.data);
@@ -48,7 +49,15 @@ const ComicsSearch = ({ addToFav, favorites }) => {
   };
 
   return isLoading ? (
-    <div>Loading</div>
+    <div className="loading">
+      <BeatLoader
+        color={"antiquewhite"}
+        loading={isLoading}
+        size={20}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </div>
   ) : (
     <div className="comics-page">
       <div className="comics-container">

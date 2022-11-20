@@ -2,6 +2,7 @@ import "./CharactersSearch.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import BeatLoader from "react-spinners/BeatLoader";
 
 const CharactersSearch = () => {
   const [data, setData] = useState();
@@ -15,7 +16,7 @@ const CharactersSearch = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/characters?limit=${limit}&skip=${skip}&name=${name}`
+          `https://site--marvel-backend--l7d2svd7qlv9.code.run/characters?limit=${limit}&skip=${skip}&name=${name}`
         );
 
         setData(response.data);
@@ -27,7 +28,15 @@ const CharactersSearch = () => {
     fetchData();
   }, [limit, skip, name]);
   return isLoading ? (
-    <div>Loading</div>
+    <div className="loading">
+      <BeatLoader
+        color={"antiquewhite"}
+        loading={isLoading}
+        size={20}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </div>
   ) : (
     <div className="characters-page">
       <div className="characters-container">

@@ -7,7 +7,9 @@ import { keyframes } from "styled-components";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Characters = ({ favorites, addToFav }) => {
+import BeatLoader from "react-spinners/BeatLoader";
+
+const Characters = ({ favorites }) => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
@@ -21,10 +23,10 @@ const Characters = ({ favorites, addToFav }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/character/${id}`
+          `https://site--marvel-backend--l7d2svd7qlv9.code.run/character/${id}`
         );
         const responseComics = await axios.get(
-          `http://localhost:4000/comics/${id}`
+          `https://site--marvel-backend--l7d2svd7qlv9.code.run/comics/${id}`
         );
         setComicsData(responseComics.data);
         setData(response.data);
@@ -53,7 +55,15 @@ const Characters = ({ favorites, addToFav }) => {
   `;
 
   return isLoading ? (
-    <div>Loading</div>
+    <div className="loading">
+      <BeatLoader
+        color={"antiquewhite"}
+        loading={isLoading}
+        size={20}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </div>
   ) : (
     <div className="char-page">
       <div className="char-card char-container">

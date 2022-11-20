@@ -1,10 +1,12 @@
 import "./Home.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { BeatLoader } from "react-spinners";
 
 //components
 import ComicsDisplayer from "../../components/ComicsDisplayer";
 import CharactersDisplayer from "../../components/CharactersDisplayer";
+import Footer from "../../components/Footer";
 
 const Home = ({ addToFav, favorites }) => {
   const [data, setData] = useState();
@@ -25,14 +27,13 @@ const Home = ({ addToFav, favorites }) => {
     const fetchData = async () => {
       try {
         const responseComics = await axios.get(
-          `http://localhost:4000/comics?limit=${getRandomThumbnail()}&skip=${getRandomThumbnail()}`
+          `https://site--marvel-backend--l7d2svd7qlv9.code.run/comics?limit=${getRandomThumbnail()}&skip=${getRandomThumbnail()}`
         );
         const responseCharacters = await axios.get(
-          `http://localhost:4000/characters?limit=${getRandomThumbnail()}&skip=${getRandomThumbnail()}`
+          `https://site--marvel-backend--l7d2svd7qlv9.code.run/characters?limit=${getRandomThumbnail()}&skip=${getRandomThumbnail()}`
         );
 
         setData(responseComics.data);
-        console.log(responseCharacters.data);
         setCharData(responseCharacters.data);
         setIsLoading(false);
       } catch (error) {
@@ -45,7 +46,15 @@ const Home = ({ addToFav, favorites }) => {
   // console.log(getRandomThumbnail());
 
   return isLoading ? (
-    <div>Loading</div>
+    <div className="loading">
+      <BeatLoader
+        color={"antiquewhite"}
+        loading={isLoading}
+        size={20}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </div>
   ) : (
     <div className="home-page container">
       {data.results.map((elem, index) => (
@@ -100,6 +109,7 @@ const Home = ({ addToFav, favorites }) => {
         </p>
       </div>
       <CharactersDisplayer charData={charData} random={random} />
+      <Footer />
     </div>
   );
 };

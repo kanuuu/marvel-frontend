@@ -52,6 +52,14 @@ a {
   display: none;
 }
 
+.loading {
+  height: 100vh;
+  max-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (min-width: 768px) {
   .hidden {
     display: inline;
